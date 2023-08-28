@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Progress Bar</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 70px;
+      }
+
+      .progress-container {
+        width: 300px;
+        position: relative;
+        /* border: 1px solid #ccc;*/
+        border-radius: 10px;
+      }
+
+      .progress-bar {
+        width: 0;
+        height: 30px;
+        background-color: #3498db;
+        position: absolute;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 15px; /* Add rounded corners */
+      }
+
+      .progress-value {
+        position: absolute;
+        left: -60px; /* Position it outside of the progress bar */
+        top: 0;
+        line-height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-container">
+      <div class="progress-value" id="progress-value">0%</div>
+      <div class="progress-bar" id="draggable-bar"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        const progressBar = document.getElementById('draggable-bar');
+        const progressValue = document.getElementById('progress-value');
+        const containerWidth = $('.progress-container').width();
+        let isDragging = false;
+
+        // Initial value
+        let progress = 0;
+
+        // Function to update the progress bar and value
+        function updateProgress() {
+          const percent = (progress / containerWidth) * 100;
+          progressBar.style.width = percent + '%';
+          progressValue.textContent = percent.toFixed(2) + '%';
+        }
+
+        // Mouse down event
+        progressBar.addEventListener('mousedown', () => {
+          isDragging = true;
+
+          // Mouse move event
+          document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+              const newPosition =
+                e.clientX - progressBar.getBoundingClientRect().left;
+              if (newPosition >= 0 && newPosition <= containerWidth) {
+                progress = newPosition;
+                updateProgress();
+              }
+            }
+          });
+
+          // Mouse up event
+          document.addEventListener('mouseup', () => {
+            isDragging = false;
+          });
+        });
+
+        // Initial progress update
+        updateProgress();
+      });
+    </script>
+  </body>
+</html>
