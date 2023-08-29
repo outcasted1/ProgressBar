@@ -1,0 +1,93 @@
+.progressContainer {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+.progressValue {
+  position: absolute;
+}
+.progressBar {
+  left: 35px;
+  height: 15px;
+  background-color: #3498db;
+  position: fixed; /**/
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+/******************************************************************************/
+.progressContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.barWidth {
+  flex-grow: 1;
+  height: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  position: relative;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #007bff;
+}
+
+.progressValue {
+  font-weight: bold;
+  margin-left: 5px; /* Adjust the margin as needed */
+}
+/*******************************************/
+.progressContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.barWidth {
+  flex-grow: 1;
+  height: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  position: absolute;
+  border-radius: 5px;
+}
+.progressValue {
+  position: absolute;
+  font-weight: bold;
+  margin-left: 5px;
+}
+.progressBar {
+  height: 15px;
+  background-color: #3498db;
+  position: inherit;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+/***************************************************/
+
+.progressContainer {
+  display: flex;
+justify-content: space-around;
+}
+
+.progressValue {
+width: 40px;
+font-weight: bold;
+}
+.progressBar {
+height: 15px;
+background: rgb(255,0,200);
+background: linear-gradient(90deg, rgba(255,0,200,1) 0%, rgba(197,0,255,1) 60%, rgba(51,0,255,1) 100%);
+position: inherit;
+cursor: pointer;
+border: 1px solid #ccc;
+border-radius: 15px;
+}
