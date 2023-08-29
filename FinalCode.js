@@ -17,26 +17,20 @@ function setProgressBar(controlID) {
     targetElement.append(progressBar);
   });
 
-  var barWidth = targetHeaderWidth - 40;
+  var barWidth = targetHeaderWidth - 50;
   $('.barWidth').width(barWidth);
-
   const progressBars = $('.progressBar');
   const progressValue = $('.progressValue');
-  //const progressContainers = $('.progressContainer');
   const bar = $('.barWidth');
-
   let isDragging = false;
   const progressValues = new Array(progressBars.length).fill(0);
-
-  // Function to update a specific progress bar and value
   function updateProgress(index) {
     const progressBarWidth = bar.eq(index).width();
     const percent = (progressValues[index] / progressBarWidth) * 100;
-    const limitedPercent = Math.min(100, Math.max(0, percent)); // Limit percent between 0 and 100
+    const limitedPercent = Math.min(100, Math.max(0, percent)); 
     progressBars.eq(index).css('width', limitedPercent + '%');
     progressValue.eq(index).text(Math.round(limitedPercent) + '%');
   }
-
   progressBars.each(function (index) {
     $(this).mousedown(function () {
       isDragging = true;
